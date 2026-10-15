@@ -7,6 +7,7 @@ Never use this service-role key in browser code or commit it to Git.
 import csv
 import datetime as dt
 import json
+import math
 import os
 import pathlib
 import sys
@@ -48,11 +49,11 @@ def validate(row, line):
         raise ValueError(f"line {line}: unknown platform")
     for field in ("listing_url", "source_url"):
         u = urllib.parse.urlsplit(row[field].strip())
-        if u.scheme not in ("https", "http") or not u.netloc:
+        if u.scheme != "https" or not u.hostname or u.username or u.password:
             raise ValueError(f"line {line}: invalid {field}")
     price = float(row["seller_price"])
     shipping = float(row["shipping_fee"])
-    if not (0 <= price <= 1000000000 and 0 <= shipping <= 1000000000):
+    if not (math.isfinite(price) and math.isfinite(shipping) and 0 <= price <= 1000000000 and 0 <= shipping <= 1000000000):
         raise ValueError(f"line {line}: invalid price")
     rank = row.get("rank", "").strip()
     if rank and (not rank.isdecimal() or not 1 <= int(rank) <= 10):
