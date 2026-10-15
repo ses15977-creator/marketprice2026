@@ -1,0 +1,13 @@
+name: Inspect Gmarket Super Deal
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect public Gmarket page without writing data
+        run: python3 collectors/gmarket_probe.py
