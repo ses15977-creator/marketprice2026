@@ -77,7 +77,11 @@ def main():
     if not records:
         print("No rows to import; no observations created")
         return
-    # Validate the whole file before performing any writes.
+    import_records(records)
+
+
+def import_records(records):
+    """Save pre-validated observations; exact timestamps are idempotent."""
     for rec in records:
         query = "?platform_id=eq." + str(rec["platform_id"]) + "&url=eq." + urllib.parse.quote(rec["url"], safe="") + "&select=id&limit=1"
         matches = request("offers", query=query)
@@ -88,7 +92,6 @@ def main():
             offer_id = request("offers", "POST", {"platform_id": rec["platform_id"],
                 "product_id": product_id, "listing_title": rec["name"],
                 "seller_name": rec["seller"], "url": rec["url"], "is_deal": rec["is_deal"]})[0]["id"]
-        # Re-running the same CSV should not duplicate an identical observation.
         stamp = urllib.parse.quote(rec["observed_at"], safe="")
         existing = request("observations", query=f"?offer_id=eq.{offer_id}&observed_at=eq.{stamp}&select=id&limit=1")
         if existing:
@@ -101,7 +104,6 @@ def main():
             request("rank_observations", "POST", {"offer_id": offer_id,
                 "rank": rec["rank"], "observed_at": rec["observed_at"]})
         print("Imported verified observation", offer_id, rec["observed_at"])
-
 
 if __name__ == "__main__":
     try:
