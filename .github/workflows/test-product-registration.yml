@@ -1,0 +1,21 @@
+name: Test product registration
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'collectors/import_csv.py'
+      - 'collectors/register_product.py'
+      - 'collectors/tests/**'
+      - '.github/workflows/test-product-registration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile Python
+        run: python3 -m compileall -q collectors
+      - name: Run registration tests (no database writes)
+        run: python3 -m unittest discover -s collectors/tests -v
