@@ -31,6 +31,14 @@ class ImportValidationTests(unittest.TestCase):
         row=sample(); row["listing_url"]="javascript:alert(1)"
         with self.assertRaises(ValueError): import_csv.validate(row, 2)
 
+    def test_nan_price(self):
+        row=sample(); row["seller_price"]="nan"
+        with self.assertRaises(ValueError): import_csv.validate(row, 2)
+
+    def test_http_source_is_rejected(self):
+        row=sample(); row["source_url"]="http://example.com"
+        with self.assertRaises(ValueError): import_csv.validate(row, 2)
+
     def test_rank_out_of_range(self):
         row=sample(); row["rank"]="11"
         with self.assertRaises(ValueError): import_csv.validate(row, 2)
