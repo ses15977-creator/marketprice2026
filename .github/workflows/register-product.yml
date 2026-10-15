@@ -1,0 +1,69 @@
+name: Register verified product
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Shopping platform'
+        type: choice
+        options:
+          - G마켓
+          - 옥션
+          - 11번가
+          - 쿠팡
+          - 카카오쇼핑
+        required: true
+      product_name:
+        description: 'Verified exact product name'
+        type: string
+        required: true
+      listing_url:
+        description: 'Original product page URL (https://)'
+        type: string
+        required: true
+      seller_price:
+        description: 'Verified price in KRW (integer, no commas)'
+        type: string
+        required: true
+      shipping_fee:
+        description: 'Verified shipping fee in KRW (integer; 0 if free)'
+        type: string
+        required: true
+        default: '0'
+      source_url:
+        description: 'URL used to verify price (https://)'
+        type: string
+        required: true
+      seller_name:
+        description: 'Seller name (optional)'
+        type: string
+        required: false
+      is_deal:
+        description: 'Verified event/deal product?'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: register-verified-product
+  cancel-in-progress: false
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate registration code
+        run: python3 -m unittest discover -s collectors/tests -v
+      - name: Save verified product in Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          PRODUCT_PLATFORM: ${{ inputs.platform }}
+          PRODUCT_NAME: ${{ inputs.product_name }}
+          PRODUCT_URL: ${{ inputs.listing_url }}
+          PRODUCT_PRICE: ${{ inputs.seller_price }}
+          PRODUCT_SHIPPING: ${{ inputs.shipping_fee }}
+          PRODUCT_SOURCE_URL: ${{ inputs.source_url }}
+          PRODUCT_SELLER: ${{ inputs.seller_name }}
+          PRODUCT_IS_DEAL: ${{ inputs.is_deal }}
+        run: python3 collectors/register_product.py
