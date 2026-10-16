@@ -153,9 +153,11 @@ def main():
                 report['run_log_saved'] = True
             except (ValueError, urllib.error.URLError):
                 report['run_log_saved'] = False
+                report['database_status'] = 'run_log_write_failed'
                 report['status'] = 'failed'
         else:
             report['run_log_saved'] = False
+            report['database_status'] = 'missing_server_credentials'
         pathlib.Path('gmarket-collection-result.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n')
         print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report['status'] == 'success' else 2
