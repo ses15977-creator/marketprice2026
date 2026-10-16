@@ -1,0 +1,33 @@
+name: Collect verified Gmarket offers
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'collectors/gmarket_collect.py'
+      - 'collectors/tests/test_gmarket_collect.py'
+      - '.github/workflows/gmarket-collect.yml'
+permissions:
+  contents: read
+concurrency:
+  group: gmarket-collection
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s collectors/tests -v
+      - name: Collect public permitted structured offers
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 collectors/gmarket_collect.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gmarket-collection-result
+          path: gmarket-collection-result.json

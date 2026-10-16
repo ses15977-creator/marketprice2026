@@ -93,7 +93,7 @@ def main():
         "automated_product_collection_ready": False,
     }
     report_path = pathlib.Path(os.environ.get("GMARKET_REPORT_PATH", "gmarket-probe-result.json"))
-    report_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    report_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print("REPORT_PATH=" + str(report_path))
     if not accessible:
