@@ -24,7 +24,9 @@ FILE = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else "collectors/observatio
 
 def request(table, method="GET", body=None, query=""):
     url = BASE + "/rest/v1/" + table + query
-    headers = {"apikey": KEY, "Authorization": "Bearer " + KEY, "Content-Type": "application/json", "Prefer": "return=representation"}
+    headers = {"apikey": KEY, "Content-Type": "application/json", "Prefer": "return=representation"}
+    if KEY.startswith("eyJ"):
+        headers["Authorization"] = "Bearer " + KEY
     payload = json.dumps(body, ensure_ascii=False).encode("utf-8") if body is not None else None
     req = urllib.request.Request(url, data=payload, method=method, headers=headers)
     with urllib.request.urlopen(req, timeout=30) as resp:
