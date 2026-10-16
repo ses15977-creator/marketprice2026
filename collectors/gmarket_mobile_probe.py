@@ -5,6 +5,9 @@ Never bypass access controls, infer product prices, or save observations.
 """
 import html.parser
 import json
+import os
+import pathlib
+import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -82,13 +85,23 @@ def inspect(url, fetcher=urllib.request.urlopen):
 
 def main():
     results = [inspect(url) for url in URLS]
-    for result in results:
-        print(json.dumps(result, ensure_ascii=False))
-    print("VERIFIED_PRODUCTS_SAVED=0 (read-only inspection)")
-    # A 403 is expected and informative: don't fail the workflow just for it.
-    if not any(x["status"] == "html_accessible" for x in results):
-        print("ACCESS_UNAVAILABLE: Neither page returned inspectable HTML.")
+    accessible = any(x["status"] == "html_accessible" for x in results)
+    summary = {
+        "state": "html_accessible_needs_price_verification" if accessible else "access_unavailable",
+        "results": results,
+        "verified_products_saved": 0,
+        "automated_product_collection_ready": False,
+    }
+    report_path = pathlib.Path(os.environ.get("GMARKET_REPORT_PATH", "gmarket-probe-result.json"))
+    report_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    print("REPORT_PATH=" + str(report_path))
+    if not accessible:
+        print("ACCESS_UNAVAILABLE: Cannot inspect page HTML; automatic collection is NOT running.")
+        return 2
+    print("ACCESSIBLE_ONLY: HTML access does NOT prove product and price extraction.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
