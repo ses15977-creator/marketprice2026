@@ -19,3 +19,10 @@ jobs:
         run: python3 -m unittest discover -s collectors/tests -p 'test_gmarket_mobile_probe.py' -v
       - name: Inspect both Gmarket pages without writing to database
         run: python3 collectors/gmarket_mobile_probe.py
+      - name: Upload verification report even if blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gmarket-mobile-verification
+          path: gmarket-probe-result.json
+          if-no-files-found: warn
