@@ -1,0 +1,21 @@
+name: Check Supabase connection (read only)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'collectors/check_supabase.py'
+      - '.github/workflows/check-supabase.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate server-side Supabase key and read known platforms
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 collectors/check_supabase.py
