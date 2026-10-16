@@ -1,12 +1,16 @@
-{"platform":"G마켓","event":"슈퍼딜","observed_at":"2026-10-16T17:29:00+09:00","source_url":"https://m.gmarket.co.kr/n/superdeal","collection_method":"브라우저 화면 확인","products":[
-{"rank":1,"goodscode":"4842939630","brand":"농심","name":"농심 누룽지팝 오리지널 3개 + 매콤한맛 3개","price":14370,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4842939630"},
-{"rank":2,"goodscode":"3109294779","brand":"설화수","name":"(12%결제할인)설화수 NEW 자음 2종(+여윤팩 추가) +쇼핑백+증정","price":124430,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/3109294779"},
-{"rank":3,"goodscode":"4667874477","brand":"","name":"(신선집중) 100% 국내산 재료 외할머니 손맛 전라도식 20년 장인김치 배추김치 프리미엄 10kg","price":32020,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4667874477"},
-{"rank":4,"goodscode":"4100146124","brand":"삼성전자","name":"삼성 WF24D20CEEC 비스포크AI 세탁24kg+건조20kg 세트","price":2168000,"shipping_fee":null,"url":"https://m.gmarket.co.kr/vi/product/4100146124"},
-{"rank":5,"goodscode":"4720866123","brand":"크라운","name":"(12%결제할인) (레트로에디션)산도161g2개 +하임142g2개+빅파이216g2개+죠리퐁74g2개 +마이쮸 LED키캡키링","price":13500,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4720866123"},
-{"rank":6,"goodscode":"2512693532","brand":"크라운","name":"(12%결제할인) 연양갱 8번들(밤양갱+팥양갱) 4팩(총32개) 등산/골프/러닝 당 충전 간식","price":12600,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/2512693532"},
-{"rank":7,"goodscode":"4820349964","brand":"크라운","name":"(12%결제할인) (옵션)크라운 마이쮸 3봉지 골라담기(토마토 포도복숭아 딸기사과 리치피치 멜론애플망고)","price":11320,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4820349964"},
-{"rank":8,"goodscode":"3674910582","brand":"아메리칸 투어리스터","name":"(23%+5%) 아메리칸투어리스터 주말특가 캐리어/백팩 91종 최대 65%세일","price":90660,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/3674910582"},
-{"rank":9,"goodscode":"4805187100","brand":"삼성전자","name":"갤럭시 Z폴드8 자급제 256GB 체감197만원ㅣ신세계5만원+꼭맴버십ㅣ무이자최대16개월","price":2223070,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4805187100"},
-{"rank":10,"goodscode":"4866881396","brand":"삼성전자","name":"갤럭시탭 S12 울트라 WiFi 전용 256GB 그레이 /최대 혜택가 167만/SM-X940 37.1cm(14.6인치)","price":1899700,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4866881396"}
-]}
+{
+  "platform": "G마켓", "event": "슈퍼딜", "observed_at": "2026-10-16T17:44:00+09:00",
+  "source_url": "https://m.gmarket.co.kr/n/superdeal", "collection_method": "브라우저 화면 확인",
+  "products": [
+    {"rank":1,"goodscode":"4842939630","brand":"농심","name":"농심 누룽지팝 오리지널 3개 + 매콤한맛 3개","price":14370,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4842939630","image_url":"https://image.gmarket.co.kr/hanbando/202610/be2e8f23-3570-404b-b30a-a6e560b9956a.jpg"},
+    {"rank":2,"goodscode":"3109294779","brand":"설화수","name":"(12%결제할인)설화수 NEW 자음 2종(+여윤팩 추가) +쇼핑백+증정","price":124430,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/3109294779","image_url":"https://image.gmarket.co.kr/hanbando/202610/135cdeda-ee39-443b-bd6c-3eb6462b9d53.jpg"},
+    {"rank":3,"goodscode":"4667874477","brand":"","name":"(신선집중) 100% 국내산 재료 외할머니 손맛 전라도식 20년 장인김치 배추김치 프리미엄 10kg","price":32020,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4667874477","image_url":"https://image.gmarket.co.kr/hanbando/202610/1d495126-94ff-4382-ab40-299d17e8c238.jpg"},
+    {"rank":4,"goodscode":"4100146124","brand":"삼성전자","name":"삼성 WF24D20CEEC 비스포크AI 세탁24kg+건조20kg 세트","price":2168000,"shipping_fee":null,"url":"https://m.gmarket.co.kr/vi/product/4100146124","image_url":"https://image.gmarket.co.kr/hanbando/202610/b0a13158-a124-4b95-add0-5884a49f1fe8.jpg"},
+    {"rank":5,"goodscode":"2512693532","brand":"크라운","name":"(12%결제할인) 연양갱 8번들(밤양갱+팥양갱) 4팩(총32개) 등산/골프/러닝 당 충전 간식","price":12600,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/2512693532","image_url":"https://image.gmarket.co.kr/hanbando/202610/6e39fbc7-c9f0-42c5-885d-efc0561399ff.jpg"},
+    {"rank":6,"goodscode":"4820349964","brand":"크라운","name":"(12%결제할인) (옵션)크라운 마이쮸 3봉지 골라담기(토마토 포도복숭아 딸기사과 리치피치 멜론애플망고)","price":11320,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4820349964","image_url":"https://image.gmarket.co.kr/hanbando/202610/b77c75e9-fa5b-4fb4-a597-4962d8e33290.jpg"},
+    {"rank":7,"goodscode":"3674910582","brand":"아메리칸 투어리스터","name":"(23%+5%) 아메리칸투어리스터 주말특가 캐리어/백팩 91종 최대 65%세일","price":90660,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/3674910582","image_url":"https://image.gmarket.co.kr/hanbando/202610/4e36b19a-16ec-467a-83c2-e0bdc826b36f.jpg"},
+    {"rank":8,"goodscode":"4805187100","brand":"삼성전자","name":"갤럭시 Z폴드8 자급제 256GB 체감197만원ㅣ신세계5만원+꼭맴버십ㅣ무이자최대16개월","price":2223070,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4805187100","image_url":"https://image.gmarket.co.kr/hanbando/202610/2009e87b-2dd5-43fe-b754-b09d95176aa9.jpg"},
+    {"rank":9,"goodscode":"4866881396","brand":"삼성전자","name":"갤럭시탭 S12 울트라 WiFi 전용 256GB 그레이 /최대 혜택가 167만/SM-X940 37.1cm(14.6인치)","price":1899700,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4866881396","image_url":"https://image.gmarket.co.kr/hanbando/202610/8f0e9389-f40c-4920-a953-049e44fe20fa.jpg"},
+    {"rank":10,"goodscode":"4804223822","brand":"삼성전자","name":"갤럭시 Z폴드8 울트라 256GB 자급제폰 체감가224만(꼭멤버십+신세계5만포함) l 무이자최대16개월","price":2495340,"shipping_fee":0,"url":"https://m.gmarket.co.kr/vi/product/4804223822","image_url":"https://image.gmarket.co.kr/hanbando/202610/06bb0d1e-80b7-4fe4-b3d3-a6ba9c94dff2.jpg"}
+  ]
+}
