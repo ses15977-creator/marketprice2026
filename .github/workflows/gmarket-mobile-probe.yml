@@ -1,0 +1,21 @@
+name: Verify Gmarket mobile event pages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'collectors/gmarket_mobile_probe.py'
+      - 'collectors/tests/test_gmarket_mobile_probe.py'
+      - '.github/workflows/gmarket-mobile-probe.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test HTML inspection without network
+        run: python3 -m unittest discover -s collectors/tests -p 'test_gmarket_mobile_probe.py' -v
+      - name: Inspect both Gmarket pages without writing to database
+        run: python3 collectors/gmarket_mobile_probe.py
