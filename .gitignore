@@ -1,4 +1,7 @@
+local-logs/
+gmarket-collection-result.json
+gmarket-probe-result.json
 __pycache__/
 *.pyc
-gmarket-*-result.json
-_site/
+.env
+.env.*
